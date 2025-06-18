@@ -1,4 +1,5 @@
 import React, { Children } from "react";
+import Button from "./Button";
 
 export default function Header(props) {
   return (

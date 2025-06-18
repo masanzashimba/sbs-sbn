@@ -6,6 +6,7 @@ const items = [
   { name: "Contact", href: "/contact" },
   { name: "Connexion", href: "/connexion" },
   { name: "Inscription", href: "/inscription" },
+  { name: "Articles", href: "/Articles" },
 ];
 
 function NavBar() {
