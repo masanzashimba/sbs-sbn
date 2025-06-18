@@ -4,6 +4,8 @@ const items = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "Contact", href: "/contact" },
+  { name: "Connexion", href: "/connexion" },
+  { name: "Inscription", href: "/inscription" },
 ];
 
 function NavBar() {
