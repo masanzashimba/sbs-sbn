@@ -11,7 +11,9 @@ import Inscription from "./pages/inscription/inscription.jsx";
 import Home from "./pages/Home/Home.jsx";
 import { Toaster } from "react-hot-toast";
 import Articles from "./pages/Articles/Articles.jsx";
-import CreatePost from "./pages/Articles/CreatePost.jsx";
+import CreatePost from "./pages/Articles/Create.jsx";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ArticleDetails from "./components/common/ArticleDetails.jsx";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -19,6 +21,7 @@ const router = createBrowserRouter([
   { path: "/Contact", element: <Contact /> },
   { path: "/Articles", element: <Articles /> },
   { path: "/Articles/CreatePost", element: <CreatePost /> },
+  { path: "/Articles/:id", element: <ArticleDetails /> },
   { path: "/Connexion", element: <Connexion /> },
   { path: "/Inscription", element: <Inscription /> },
 ]);
@@ -26,6 +29,8 @@ const router = createBrowserRouter([
 createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Toaster position="top-right" reverseOrder={false} />
-    <RouterProvider router={router} />
+    <QueryClientProvider client={new QueryClient()}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>
 );

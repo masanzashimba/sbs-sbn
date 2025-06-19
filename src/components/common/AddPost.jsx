@@ -1,9 +1,12 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 export default function AddPost() {
+  const navigate = useNavigate();
   const user = JSON.parse(localStorage.getItem("user"));
   const {
     handleSubmit,
@@ -11,6 +14,23 @@ export default function AddPost() {
     reset,
     formState: { errors },
   } = useForm();
+  const useQuery = useQueryClient();
+
+  const mutation = useMutation({
+    mutationFn: (post) => {
+      return axios.post("http://localhost:3000/posts", post);
+    },
+    onError: (error) => {
+      console.error("Erreur lors de la création de l'article:", error);
+      toast.error("Erreur lors de la création de l'article");
+    },
+    onSuccess: () => {
+      toast.success("Article créé avec succès!");
+      reset();
+      useQuery.invalidateQueries({ queryKey: ["posts"] });
+    },
+  });
+
   const onSubmit = (data) => {
     const postData = {
       ...data,
@@ -20,18 +40,8 @@ export default function AddPost() {
       dislikePost: 0,
       auteur: user.nomUser,
     };
-    axios
-      .post("http://localhost:3000/posts", postData)
-      .then((response) => {
-        console.log("Article publié avec succès:", response.data);
-        toast.success("Article publié avec succès!");
-        reset();
-        window.location.reload();
-      })
-      .catch((error) => {
-        console.error("Erreur lors de la publication de l'article:", error);
-        toast.error("Erreur lors de la publication de l'article");
-      });
+    mutation.mutate(postData);
+    navigate("/");
   };
   return (
     <div className="max-w-3xl mx-auto mt-10 bg-white shadow-lg rounded-lg p-8">

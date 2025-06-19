@@ -3,6 +3,7 @@ import Header from "../../components/common/Header";
 import NavBar from "../../components/common/NavBar";
 import Button from "../../components/common/Button";
 import { Link } from "react-router";
+import Article from "../../components/common/Article";
 
 export default function Articles() {
   return (
@@ -18,6 +19,9 @@ export default function Articles() {
             Ajouter un article
           </Button>
         </Link>
+      </div>
+      <div className="mt-4">
+        <Article />.
       </div>
     </>
   );
