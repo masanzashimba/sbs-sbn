@@ -20,6 +20,13 @@
       "mailUser": "vankabange@gmail.com",
       "password": "Vankabange12",
       "confirmPassword": "Vankabange12"
+    },
+    {
+      "id": "d86a",
+      "nomUser": "van kabange",
+      "mailUser": "yannelshimba@gmail.com",
+      "password": "Vankabange12",
+      "confirmPassword": "Vankabange12"
     }
   ],
   "posts": [
@@ -41,17 +48,6 @@
       "content": "Profitez d’un concentré de puissance et d’élégance avec le MacBook Air 13 pouces équipé de la puce révolutionnaire Apple M1. Conçu pour offrir performance et autonomie, ce MacBook est votre allié idéal au quotidien.",
       "userId": "0b71",
       "createdAt": "2025-06-18T19:01:41.746Z",
-      "likePost": 0,
-      "dislikePost": 0,
-      "auteur": "simeon masanza"
-    },
-    {
-      "id": "cf72",
-      "title": "iokja",
-      "imageUrl": "https://fr.shopping.rakuten.com/nav/500x500/Informatique_Ordinateur-portable-f1-Apple-f5-macbook-air.jpg",
-      "content": "eafhauhifhaeiuhfaiuhfoieheofioihfea",
-      "userId": "0b71",
-      "createdAt": "2025-06-18T19:05:42.279Z",
       "likePost": 0,
       "dislikePost": 0,
       "auteur": "simeon masanza"
@@ -110,6 +106,17 @@
       "likePost": 0,
       "dislikePost": 0,
       "auteur": "simeon masanza"
+    },
+    {
+      "id": "549a",
+      "title": "Huawei MateBook : L’Ultraportable Performant pour le Travail et les Créatifs ",
+      "imageUrl": "https://www.silicon.co.uk/wp-content/uploads/2025/05/Huaweis-MateBook-Fold-Ultimate-Design-includes-an-18-inch-folding-display.-Image-credit-Huawei.jpg",
+      "content": "Doté d’un écran FullView bord-à-bord, d’un processeur Intel® Core™ dernière génération et d’une autonomie longue durée, ce PC portable est parfait pour les professionnels exigeants et les créatifs. Profitez de fonctionnalités intelligentes comme la collaboration multi-écran Huawei Share, un clavier confortable rétroéclairé et une connectivité ultra-rapide.",
+      "userId": "d86a",
+      "createdAt": "2025-06-20T09:07:59.908Z",
+      "likePost": 0,
+      "dislikePost": 0,
+      "auteur": "van kabange"
     }
   ],
   "comments": [
@@ -189,6 +196,42 @@
       "name": "fugit labore quia mollitia quas deserunt nostrum sunt",
       "email": "Veronica_Goodwin@timmothy.net",
       "body": "ut dolorum nostrum id quia aut est\nfuga est inventore vel eligendi explicabo quis consectetur\naut occaecati repellat id natus quo est\nut blanditiis quia ut vel ut maiores ea"
+    },
+    {
+      "id": "8382",
+      "name": "simeon",
+      "email": "simeonmasanza@gmail.com",
+      "comment": "best comment ",
+      "postId": "ca37",
+      "date": "19/06/2025",
+      "avatar": "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
+    },
+    {
+      "id": "3b08",
+      "name": "joel",
+      "email": "joelshimba@gmail.com",
+      "comment": "app finie avec succes\n",
+      "postId": "ca37",
+      "date": "19/06/2025",
+      "avatar": "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
+    },
+    {
+      "id": "f8df",
+      "name": "jean",
+      "email": "simeonmasanza@gmail.com",
+      "comment": "ertyuioiuytre",
+      "postId": "20d3",
+      "date": "20/06/2025",
+      "avatar": "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
+    },
+    {
+      "id": "e19a",
+      "name": "aeaftzt",
+      "email": "simeonasanza@gmail.com",
+      "comment": "eagtzrgrehetjhteh",
+      "postId": "2485",
+      "date": "20/06/2025",
+      "avatar": "https://icons.veryicon.com/png/o/internet--web/prejudice/user-128.png"
     }
   ]
 }

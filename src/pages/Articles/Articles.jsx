@@ -4,6 +4,7 @@ import NavBar from "../../components/common/NavBar";
 import Button from "../../components/common/Button";
 import { Link } from "react-router";
 import Article from "../../components/common/Article";
+import Footer from "../../components/common/Footer";
 
 export default function Articles() {
   return (
@@ -23,6 +24,7 @@ export default function Articles() {
       <div className="mt-4">
         <Article />.
       </div>
+      <Footer></Footer>
     </>
   );
 }
