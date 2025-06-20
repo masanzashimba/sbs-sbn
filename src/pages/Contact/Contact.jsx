@@ -1,3 +1,4 @@
+import ContactSection from "../../components/common/contactSection";
 import FAQSection from "../../components/common/FAQSection";
 import Footer from "../../components/common/Footer";
 import Header from "../../components/common/Header";
@@ -12,6 +13,7 @@ export default function Contact() {
         subtitle="Nous serions ravis d'échanger sur vos projets et besoins de recherche"
         description=""
       />
+      <ContactSection />
       <FAQSection></FAQSection>
       <Footer></Footer>
     </div>
