@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "./Button";
 import { SyncLoader } from "react-spinners";
-import { fetchPosts } from "../../app/posts/postSlice";
+import { fetchPosts } from "../../app/redux/postSlice";
 
 export default function Article() {
   const dispatch = useDispatch();

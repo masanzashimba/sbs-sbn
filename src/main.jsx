@@ -15,7 +15,7 @@ import CreatePost from "./pages/Articles/Create.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ArticleDetails from "./components/common/ArticleDetails.jsx";
 import { Provider } from "react-redux";
-import { store } from "./app/posts/store.js";
+import { store } from "./app/redux/store.js";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
