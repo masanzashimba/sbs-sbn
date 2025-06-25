@@ -1,38 +1,37 @@
 import { Link, NavLink } from "react-router-dom";
-import { useState, useRef, useEffect } from "react";
-
-const baseItems = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "Contact", href: "/contact" },
-  { name: "Articles", href: "/Articles" },
-];
+import { useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../app/posts/authSlice";
+import { toggleUserMenu, closeUserMenu } from "../../app/posts/uiSlice";
 
 function NavBar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const popoverRef = useRef(null);
-  const user = JSON.parse(localStorage.getItem("user") || null);
+  const dispatch = useDispatch();
+  const { user } = useSelector((state) => state.auth);
+  const navItems = useSelector((state) => state.nav.items);
+  const isUserMenuOpen = useSelector((state) => state.ui.isUserMenuOpen);
 
-  // Fermer le popover quand on clique à l'extérieur
+  const popoverRef = useRef(null);
+
   useEffect(() => {
-    function handleClickOutside(event) {
+    const handleClickOutside = (event) => {
       if (popoverRef.current && !popoverRef.current.contains(event.target)) {
-        setIsOpen(false);
+        dispatch(closeUserMenu());
       }
-    }
+    };
+
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [dispatch]);
 
   const handleLogout = () => {
-    localStorage.removeItem("user");
-    window.location.href = "/connexion";
+    dispatch(logout());
+    dispatch(closeUserMenu());
   };
 
   const getUserInitials = () => {
     if (!user?.nomUser) return "US";
-    const names = user.nomUser.split(" ");
-    return names
+    return user.nomUser
+      .split(" ")
       .map((name) => name[0])
       .join("")
       .toUpperCase();
@@ -58,7 +57,7 @@ function NavBar() {
 
       <nav className="flex items-center gap-6">
         <ul className="flex justify-between gap-5 text-xl font-medium">
-          {baseItems.map((item) => (
+          {navItems.map((item) => (
             <li
               key={item.href}
               className="hover:text-blue-600 transition-colors duration-300"
@@ -77,10 +76,12 @@ function NavBar() {
           ))}
         </ul>
 
+        {/* Menu utilisateur */}
         <div className="relative" ref={popoverRef}>
           <button
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => dispatch(toggleUserMenu())}
             className="flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors"
+            aria-label="Menu utilisateur"
           >
             {user ? (
               <span className="font-medium">{getUserInitials()}</span>
@@ -102,7 +103,7 @@ function NavBar() {
             )}
           </button>
 
-          {isOpen && (
+          {isUserMenuOpen && (
             <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50">
               {user ? (
                 <>
@@ -121,14 +122,14 @@ function NavBar() {
                   <Link
                     to="/connexion"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => dispatch(closeUserMenu())}
                   >
                     Connexion
                   </Link>
                   <Link
                     to="/inscription"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => dispatch(closeUserMenu())}
                   >
                     S'inscrire
                   </Link>

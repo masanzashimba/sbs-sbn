@@ -1,37 +1,25 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
-import axios from "axios";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
+import { useLogin } from "./hook";
 
 export default function Connexion() {
   const navigate = useNavigate();
+  const { login } = useLogin();
+
   useEffect(() => {
     const user = localStorage.getItem("user");
-    if (user) {
-      navigate("/");
-    }
+    if (user) navigate("/");
   }, [navigate]);
+
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => {
-    axios
-      .get(
-        `http://localhost:3000/users?mailUser=${data.mailUser}&motDePasse=${data.password}`
-      )
-      .then((response) => {
-        if (response.data.length > 0) {
-          localStorage.setItem("user", JSON.stringify(response.data[0]));
-          console.log("Connexion réussie:", response.data[0]);
-          toast.success("Connexion réussie!");
-          navigate("/");
-        } else {
-          toast.error("Identifiants incorrects, veuillez réessayer.");
-        }
-      });
+    login(data);
   };
 
   return (
@@ -45,7 +33,6 @@ export default function Connexion() {
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-            {/* Champ Email */}
             <div>
               <label
                 htmlFor="nom"
@@ -76,7 +63,6 @@ export default function Connexion() {
               </div>
             </div>
 
-            {/* Champ Mot de passe */}
             <div>
               <label
                 htmlFor="password"
@@ -108,7 +94,6 @@ export default function Connexion() {
               </div>
             </div>
 
-            {/* Bouton de soumission */}
             <div>
               <button
                 type="submit"
@@ -116,7 +101,6 @@ export default function Connexion() {
               >
                 Se connecter
               </button>
-              {/* <Link>Voulez-vous crée un compte</Link> */}
             </div>
             <div className="text-sm text-center">
               <a

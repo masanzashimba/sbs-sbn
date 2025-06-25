@@ -1,42 +1,15 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
-import axios from "axios";
-import { useNavigate } from "react-router";
+import { useRegister } from "./inscription";
 
 export default function Inscription() {
-  const navigate = useNavigate();
   const {
     handleSubmit,
     register,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    if (data.password !== data.confirmPassword) {
-      toast.error("Les mots de passe ne correspondent pas");
-      return;
-    } else {
-      axios
-        .get(`http://localhost:3000/users?mailUser=${data.mailUser}`)
-        .then((response) => {
-          if (response.data.length > 0) {
-            toast.error("Un compte avec cet email existe déjà");
-          } else {
-            axios
-              .post("http://localhost:3000/users", data)
-              .then((res) => {
-                console.log(res.data);
-                toast.success("Compte créé avec succès!");
-                navigate("/Connexion");
-              })
-              .catch((error) => {
-                console.error("Erreur lors de la création du compte:", error);
-                toast.error("Erreur lors de la création du compte");
-              });
-          }
-        });
-    }
-  };
+
+  const { registerUser } = useRegister();
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -48,7 +21,7 @@ export default function Inscription() {
 
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-          <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
+          <form className="space-y-6" onSubmit={handleSubmit(registerUser)}>
             {/* Champ Nom */}
             <div>
               <label

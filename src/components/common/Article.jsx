@@ -3,12 +3,13 @@ import { useNavigate } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import Button from "./Button";
 import { SyncLoader } from "react-spinners";
-import { fetchPosts } from "../../app/redux/postSlice";
+import { fetchPosts } from "../../app/posts/postSlice";
 
 export default function Article() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { items: posts, status, error } = useSelector((state) => state.posts);
+  console.log(posts);
 
   useEffect(() => {
     if (!localStorage.getItem("user")) {

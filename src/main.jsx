@@ -6,7 +6,6 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router-dom";
 import About from "./pages/About/About.jsx";
 import Contact from "./pages/contact/Contact.jsx";
-import Connexion from "./pages/connexion/connexion.jsx";
 import Inscription from "./pages/inscription/inscription.jsx";
 import Home from "./pages/Home/Home.jsx";
 import { Toaster } from "react-hot-toast";
@@ -15,7 +14,8 @@ import CreatePost from "./pages/Articles/Create.jsx";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ArticleDetails from "./components/common/ArticleDetails.jsx";
 import { Provider } from "react-redux";
-import { store } from "./app/redux/store.js";
+import Connexion from "./pages/connexion/useLogin.jsx";
+import { store } from "./app/posts/store.js";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },

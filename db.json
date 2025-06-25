@@ -27,6 +27,13 @@
       "mailUser": "yannelshimba@gmail.com",
       "password": "Vankabange12",
       "confirmPassword": "Vankabange12"
+    },
+    {
+      "id": "6c06",
+      "nomUser": "maya shimba",
+      "mailUser": "mayashimba@gmail.com",
+      "password": "Mayashimba12",
+      "confirmPassword": "Mayashimba12"
     }
   ],
   "posts": [
